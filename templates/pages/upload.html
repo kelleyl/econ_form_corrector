@@ -1,0 +1,13 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h1>Upload CSV files for cleaning</h1>
+</div>
+<br>
+<form method="POST" enctype="multipart/form-data" action="/upload">
+  <input type="file" name="files" multiple="">
+  <input type="submit" value="upload">
+</form>
+{% endblock %}

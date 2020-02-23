@@ -1,0 +1,36 @@
+{% extends 'layouts/main.html' %}
+{% block content %}
+                    <form enctype="multipart/form-data" method="post" action="/tooutput">
+
+    <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Original</th>
+                        <th>Suggestion1</th>
+                        <th>Suggestion2</th>
+                        <th>Suggestion3</th>
+                        <th>Output</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for input in inputs %}
+                    {% set outer_loop = loop %}
+                    <tr>
+                        <td>{{input.1}}</td>
+                            {% for fund in input.0 %}
+                                <td><input type="button" onclick="document.getElementById('output_{{outer_loop.index}}').value = '{{ fund }}'" value="{{ fund }}"></td>
+                            {% endfor %}
+                        <td><label for="output_{{ loop.index }}"></label><input type="text" name="{{input.1}}" id="output_{{ loop.index }}" value="{{ input.2 }}"/></td>
+                    </tr>
+                    {% endfor %}
+
+
+                </tbody>
+            </table>
+    </div>
+                                                            <input type="submit"/>
+
+                                </form>
+{% endblock %}

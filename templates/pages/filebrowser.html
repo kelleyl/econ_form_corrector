@@ -1,0 +1,25 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<form method="POST" enctype="multipart/form-data" action="/docviewer">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>select</th>
+            <th>file name</th>
+            <th>status</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for f in files %}
+        <tr>
+            <td><input type="checkbox" class="custom-control-input" name="{{f}}" value="{{f}}" id="{{f}}_cb"></td>
+            <td>{{ f }}</td>
+            <td></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <input class="btn btn-primary" type="submit" value="Clean Files">
+</form>
+{% endblock %}
